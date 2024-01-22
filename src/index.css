@@ -1,0 +1,52 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  position: relative;
+  padding: 0;
+}
+
+body,
+#root {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+/* --------------- global scrollbar style---------------------------- */
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #8594a4;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-corner {
+  background-color: #fff !important;
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #727f8d;
+}
+::-webkit-scrollbar {
+  width: 8px;
+  height: 6px !important;
+}
+/* --------------- Text selection style---------------------------- */
+::-moz-selection {
+  background: #66c8ce;
+  color: white;
+}
+::-webkit-selection {
+  background: #66c8ce;
+  color: white;
+}
+::selection {
+  background: #66c4ca;
+  color: white;
+}

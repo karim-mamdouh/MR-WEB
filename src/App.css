@@ -1,0 +1,12 @@
+html {
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+.App {
+  text-align: center;
+  box-sizing: border-box;
+}
+a {
+  text-decoration: none !important;
+}
