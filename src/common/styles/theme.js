@@ -70,6 +70,10 @@ export const theme = createTheme({
             borderRadius: "0",
             backgroundColor: "#0de3e6",
             height: "fit-content",
+            lineHeight: "inherit",
+            ":hover": {
+              backgroundColor: "#3898ec",
+            },
           },
         },
       ],

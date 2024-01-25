@@ -1,8 +1,10 @@
 import { Route, Routes } from "react-router-dom";
 import { Suspense } from "react";
-import { CircularProgress, Stack, Typography } from "@mui/material";
+import { CircularProgress, Stack } from "@mui/material";
 import Layout from "../../components/Organisms/layout/Layout";
 import HomePage from "../../components/Pages/Home/Home.page";
+import AboutUsPage from "../../components/Pages/AboutUs/AboutUs.page";
+import UnderConstructionPage from "../../components/Pages/UnderConstruction/UnderConstruction.page";
 
 const AppRoute = () => {
   return (
@@ -23,19 +25,10 @@ const AppRoute = () => {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route path="" exact element={<HomePage />} />
-          <Route path="about-us" element={<Typography>About us</Typography>} />
-          <Route
-            path="projects"
-            element={<Typography>under construction</Typography>}
-          />
-          <Route
-            path="news"
-            element={<Typography>under construction</Typography>}
-          />
-          <Route
-            path="*"
-            element={<Typography>under construction</Typography>}
-          />
+          <Route path="about-us" element={<AboutUsPage />} />
+          <Route path="projects" element={<UnderConstructionPage />} />
+          <Route path="news" element={<UnderConstructionPage />} />
+          <Route path="*" element={<UnderConstructionPage />} />
         </Route>{" "}
       </Routes>
     </Suspense>

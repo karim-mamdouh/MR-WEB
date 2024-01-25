@@ -1,8 +1,46 @@
-import React from "react";
-import { Stack, Typography, Button } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import { Stack, Typography, Button, CircularProgress } from "@mui/material";
 import TextFieldInput from "../../../common/components/TextFieldInput/TextFieldInput";
-
+import { useFormik } from "formik";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 const HomePage = () => {
+  const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
+
+  const formik = useFormik({
+    initialValues: {
+      first_name: "",
+      last_name: "",
+      middle_name: "",
+      message: "",
+      email: "",
+    },
+    // validationSchema: LoginSchema(t),
+    onSubmit: (values) => {
+      // console.log(values);
+      setIsLoading(true);
+
+      sendEmail(values);
+    },
+  });
+  const sendEmail = (emailData) => {
+    window.emailjs
+      .send("service_mcpfre6", "template_xils9yl", emailData)
+      .then((response) => {
+        // console.log("Email sent successfully:", response);
+        setIsLoading(false);
+        toast.success("Email sent successfully");
+      })
+      .catch((error) => {
+        setIsLoading(false);
+        toast.error("Error sending email");
+      });
+  };
+  useEffect(() => {
+    // Initialize EmailJS with your user ID
+    window.emailjs.init("itsTwYD2_G8KSoagx");
+  }, []);
   return (
     <Stack sx={{ gap: "40px" }}>
       <video
@@ -18,22 +56,26 @@ const HomePage = () => {
       >
         <source
           src={
-            "https://www.shutterstock.com/shutterstock/videos/3398791279/preview/stock-footage-batroun-lebanon-may-boats-docked-in-the-port-of-batroun.mp4"
+            "https://www.shutterstock.com/shutterstock/videos/1093274369/preview/stock-footage-comino-island-malta-blue-lagoon-summer-boats-blue-sea.mp4"
           }
         />
       </video>
       <Stack
-        sx={{ justifyContent: "center", alignItems: "center", gap: "50px" }}
+        sx={{
+          justifyContent: "center",
+          alignItems: "center",
+          gap: { xs: "30px", sm: "50px" },
+        }}
       >
-        <Typography variant="h3" sx={{ fontSize: "40px" }}>
+        <Typography variant="h3" sx={{ fontSize: { xs: "25px", sm: "40px" } }}>
           Mediterranean Roots
         </Typography>
         <Typography
           variant="h4"
           sx={{
-            fontSize: "20px",
+            fontSize: { xs: "16px", sm: "20px" },
             textAlign: "center",
-            width: "70%",
+            width: { xs: "90%", sm: "70%" },
             margin: "auto",
           }}
         >
@@ -45,63 +87,110 @@ const HomePage = () => {
           and enthusiasts to build a vibrant community dedicated to the
           preservation and celebration of our heritage.
         </Typography>
-        <Button variant="fill">About Us</Button>
-        {/* Contact Us */}
-        <Typography variant="h3" sx={{ fontSize: "40px" }}>
-          Contact Us
-        </Typography>
-        <Stack
-          width="60%"
-          sx={{ justifyContent: "center", gap: "10px", alignItems: "center" }}
+        <Button
+          variant="fill"
+          sx={{ fontSize: "25px" }}
+          onClick={() => navigate("/about-us")}
         >
-          <TextFieldInput
-            placeholder="First name"
-            name="first_name"
-            // value={formik.values.email}
-            // onChange={formik.handleChange}
-            // error={formik.touched.email && Boolean(formik.errors.email)}
-            // helperText={formik.touched.email && formik.errors.email}
-          />
-          <TextFieldInput
-            placeholder="Middle name"
-            name="middle_name"
-            // value={formik.values.email}
-            // onChange={formik.handleChange}
-            // error={formik.touched.email && Boolean(formik.errors.email)}
-            // helperText={formik.touched.email && formik.errors.email}
-          />
-          <TextFieldInput
-            placeholder="Last name"
-            name="last_name"
-            // value={formik.values.email}
-            // onChange={formik.handleChange}
-            // error={formik.touched.email && Boolean(formik.errors.email)}
-            // helperText={formik.touched.email && formik.errors.email}
-          />
-          <TextFieldInput
-            placeholder="Email Address"
-            name="email"
-            // value={formik.values.email}
-            // onChange={formik.handleChange}
-            // error={formik.touched.email && Boolean(formik.errors.email)}
-            // helperText={formik.touched.email && formik.errors.email}
-          />
-          <TextFieldInput
-            placeholder="Write here your message"
-            name="message"
-            rows={5}
-            // value={formik.values.email}
-            // onChange={formik.handleChange}
-            // error={formik.touched.email && Boolean(formik.errors.email)}
-            // helperText={formik.touched.email && formik.errors.email}
-          />
-          <Button
-            variant="fill"
-            sx={{ backgroundColor: "#3898ec", width: "fit-content" }}
+          About Us
+        </Button>
+        {/* Contact Us */}
+
+        <div style={{ width: "100%", margin: "auto" }} id="contacts-section">
+          <Typography
+            variant="h3"
+            sx={{
+              fontSize: { xs: "25px", sm: "40px" },
+              marginBottom: { xs: "30px", sm: "50px" },
+              textAlign: "center",
+            }}
           >
-            Send
-          </Button>
-        </Stack>
+            Contact Us
+          </Typography>
+          <Stack
+            width={{ xs: "90%", sm: "50%" }}
+            component="form"
+            onSubmit={formik.handleSubmit}
+            sx={{
+              justifyContent: "center",
+              gap: "10px",
+              alignItems: "center",
+              margin: "auto",
+            }}
+          >
+            <TextFieldInput
+              placeholder="First name"
+              name="first_name"
+              value={formik.values.first_name}
+              onChange={formik.handleChange}
+              error={
+                formik.touched.first_name && Boolean(formik.errors.first_name)
+              }
+              helperText={formik.touched.first_name && formik.errors.first_name}
+            />
+            <TextFieldInput
+              placeholder="Middle name"
+              name="middle_name"
+              value={formik.values.middle_name}
+              onChange={formik.handleChange}
+              error={
+                formik.touched.middle_name && Boolean(formik.errors.middle_name)
+              }
+              helperText={
+                formik.touched.middle_name && formik.errors.middle_name
+              }
+            />
+            <TextFieldInput
+              placeholder="Last name"
+              name="last_name"
+              value={formik.values.last_name}
+              onChange={formik.handleChange}
+              error={
+                formik.touched.last_name && Boolean(formik.errors.last_name)
+              }
+              helperText={formik.touched.last_name && formik.errors.last_name}
+            />
+            <TextFieldInput
+              placeholder="Email Address"
+              name="email"
+              value={formik.values.email}
+              onChange={formik.handleChange}
+              error={formik.touched.email && Boolean(formik.errors.email)}
+              helperText={formik.touched.email && formik.errors.email}
+            />
+            <TextFieldInput
+              multiline={true}
+              placeholder="Write here your message"
+              name="message"
+              rows={2}
+              value={formik.values.message}
+              onChange={formik.handleChange}
+              error={formik.touched.message && Boolean(formik.errors.message)}
+              helperText={formik.touched.message && formik.errors.message}
+            />
+            <Button
+              variant="fill"
+              type="submit"
+              sx={{
+                fontSize: "25px",
+                backgroundColor: "#3898ec !important",
+                width: "fit-content",
+              }}
+            >
+              {isLoading ? (
+                <CircularProgress
+                  sx={{
+                    color: "#fff",
+                    marginX: "auto",
+                  }}
+                  size="25px"
+                />
+              ) : (
+                "Send"
+              )}
+            </Button>
+          </Stack>
+        </div>
       </Stack>
     </Stack>
   );

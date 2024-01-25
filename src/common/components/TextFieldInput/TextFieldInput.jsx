@@ -9,10 +9,13 @@ function TextFieldInput({
   sx,
   helperText,
   rows,
+  multiline = false,
+  ...props
 }) {
   return (
     <Grid container sx={{ position: "relative" }}>
       <TextField
+        multiline={multiline}
         rows={rows}
         variant="outlined"
         sx={{
@@ -23,6 +26,9 @@ function TextFieldInput({
           "& .MuiInputBase-root": {
             backgroundColor: "#fff !important",
             borderRadius: 0,
+            ...(multiline && {
+              paddingY: "8px",
+            }),
           },
           "& .MuiOutlinedInput-root": {
             "& > fieldset": {
@@ -32,7 +38,11 @@ function TextFieldInput({
             },
             "& .MuiInputBase-input": {
               borderRadius: 0,
-              border: `1px solid #ccc`,
+              ...(multiline
+                ? { padding: 0 }
+                : {
+                    paddingY: "8px",
+                  }),
             },
             "& ::placeholder": {
               fontSize: "16px !important",
@@ -53,6 +63,7 @@ function TextFieldInput({
         placeholder={placeholder}
         value={value}
         onChange={onChange}
+        {...props}
       />
       {error ? (
         <FormHelperText sx={{ color: "error.main" }}>
