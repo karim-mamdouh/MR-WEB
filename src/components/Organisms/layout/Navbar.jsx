@@ -3,7 +3,7 @@ import { Stack } from "@mui/material";
 import { Box } from "@mui/material";
 import { NavLink } from "react-router-dom";
 import ImagesSrc from "../../../utils/ImagesSrc";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -43,13 +43,15 @@ const Navbar = () => {
       },
     },
   ];
+  const location = useLocation();
+  const termsAndConditionsPage = location.pathname.includes("terms");
   return (
     <Stack
       sx={{
         justifyContent: "space-around",
         paddingY: "10px",
         flexDirection: "row",
-        position: "absolute",
+        position: termsAndConditionsPage ? "unset" : "absolute",
         zIndex: 1,
         width: "100%",
         margin: "auto",
@@ -76,7 +78,7 @@ const Navbar = () => {
               style={{
                 fontSize: "14px",
                 fontWeight: 500,
-                color: "#fff",
+                color: termsAndConditionsPage ? "#000" : "#fff",
                 textAlign: "center",
                 cursor: "pointer",
               }}
@@ -98,7 +100,7 @@ const Navbar = () => {
                   : {
                       fontSize: "14px",
                       fontWeight: 500,
-                      color: "#fff",
+                      color: termsAndConditionsPage ? "#000" : "#fff",
                       textAlign: "center",
                     }
               }
