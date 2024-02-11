@@ -5,6 +5,7 @@ import Layout from "../../components/Organisms/layout/Layout";
 import HomePage from "../../components/Pages/Home/Home.page";
 import AboutUsPage from "../../components/Pages/AboutUs/AboutUs.page";
 import UnderConstructionPage from "../../components/Pages/UnderConstruction/UnderConstruction.page";
+import TermsAndConditions from "../../components/Pages/TermsAndConditions/TermsAndConditions.page";
 
 const AppRoute = () => {
   return (
@@ -26,10 +27,11 @@ const AppRoute = () => {
         <Route path="/" element={<Layout />}>
           <Route path="" exact element={<HomePage />} />
           <Route path="about-us" element={<AboutUsPage />} />
+          <Route path="terms-and-conditions" element={<TermsAndConditions />} />
           <Route path="projects" element={<UnderConstructionPage />} />
           <Route path="news" element={<UnderConstructionPage />} />
           <Route path="*" element={<UnderConstructionPage />} />
-        </Route>{" "}
+        </Route>
       </Routes>
     </Suspense>
   );

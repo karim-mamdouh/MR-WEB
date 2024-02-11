@@ -30,7 +30,7 @@ const Footer = () => {
       id: 3,
       title: "ABOUT",
       links: [
-        { name: "Terms & Conditions", link: "/under-construction" },
+        { name: "Terms & Conditions", link: "/terms-and-conditions" },
         {
           socials: [
             { icon: <TwitterIcon />, id: 1 },
