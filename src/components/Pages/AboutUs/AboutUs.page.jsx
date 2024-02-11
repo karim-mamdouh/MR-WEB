@@ -1,5 +1,6 @@
 import React from "react";
 import { Stack, Typography, Box } from "@mui/material";
+import ImagesSrc from "../../../utils/ImagesSrc";
 
 const AboutUsPage = () => {
   const listItems = [
@@ -14,7 +15,7 @@ const AboutUsPage = () => {
   ];
   return (
     <Stack sx={{ gap: "40px", justifyContent: "center", alignItems: "center" }}>
-      <video
+      {/* <video
         style={{
           width: "100%",
           height: "70vh",
@@ -30,7 +31,18 @@ const AboutUsPage = () => {
             "https://www.shutterstock.com/shutterstock/videos/3398791279/preview/stock-footage-batroun-lebanon-may-boats-docked-in-the-port-of-batroun.mp4"
           }
         />
-      </video>
+      </video> */}
+      <iframe
+        style={{
+          width: "100%",
+          height: "70vh",
+          objectFit: "fill",
+        }}
+        src="https://www.youtube.com/embed/nZi-brd4gCI?si=Lq-_oOl0yKMMxT4Y&amp;autoplay=1"
+        title="YouTube video player"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowFullScreen
+      ></iframe>
       <Stack
         sx={{
           gap: "40px",
@@ -66,7 +78,7 @@ const AboutUsPage = () => {
               component="img"
               maxWidth="100%"
               sx={{ objectFit: "cover" }}
-              src="https://www.shutterstock.com/image-photo/hiking-through-gnarled-olive-trees-600w-2281161809.jpg"
+              src={ImagesSrc.about1}
             />
           </Box>
           <Typography
@@ -151,11 +163,7 @@ const AboutUsPage = () => {
             width={{ xs: "100%", sm: "60%", lg: "35%" }}
             height="100%"
           >
-            <Box
-              component="img"
-              maxWidth="100%"
-              src="https://assets-global.website-files.com/65acd21fb9eea4cecbf921d6/65acfd4c063e092862477d81_cedar.jpg"
-            />
+            <Box component="img" maxWidth="100%" src={ImagesSrc.about2} />
           </Box>
         </Stack>
       </Stack>

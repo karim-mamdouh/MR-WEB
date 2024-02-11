@@ -43,7 +43,7 @@ const HomePage = () => {
   }, []);
   return (
     <Stack sx={{ gap: "40px" }}>
-      <video
+      {/* <video
         style={{
           width: "100%",
           height: "70vh",
@@ -59,7 +59,18 @@ const HomePage = () => {
             "https://www.shutterstock.com/shutterstock/videos/1093274369/preview/stock-footage-comino-island-malta-blue-lagoon-summer-boats-blue-sea.mp4"
           }
         />
-      </video>
+      </video> */}
+      <iframe
+        style={{
+          width: "100%",
+          height: "70vh",
+          objectFit: "fill",
+        }}
+        src="https://www.youtube.com/embed/JoK-HwyqLec?si=4XUHUFfyQXft7g5f&amp;autoplay=1"
+        title="YouTube video player"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowFullScreen
+      ></iframe>
       <Stack
         sx={{
           justifyContent: "center",
