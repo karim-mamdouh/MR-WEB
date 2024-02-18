@@ -1,9 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { Stack, Typography, Button, CircularProgress } from "@mui/material";
+import {
+  Stack,
+  Typography,
+  Button,
+  CircularProgress,
+  Box,
+} from "@mui/material";
 import TextFieldInput from "../../../common/components/TextFieldInput/TextFieldInput";
 import { useFormik } from "formik";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import ImagesSrc from "../../../utils/ImagesSrc";
 const HomePage = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
@@ -60,17 +67,32 @@ const HomePage = () => {
           }
         />
       </video> */}
-      <iframe
-        style={{
-          width: "100%",
-          height: "70vh",
-          objectFit: "fill",
-        }}
-        src="https://www.youtube.com/embed/JoK-HwyqLec?si=4XUHUFfyQXft7g5f&amp;autoplay=1"
-        title="YouTube video player"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowFullScreen
-      ></iframe>
+      <Stack sx={{ position: "relative", alignItems: "center" }}>
+        <iframe
+          style={{
+            width: "100%",
+            height: "70vh",
+            objectFit: "fill",
+          }}
+          src="https://www.youtube.com/embed/JoK-HwyqLec?si=4XUHUFfyQXft7g5f&amp;autoplay=1&mute=1"
+          title="YouTube video player"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowFullScreen
+        ></iframe>
+        <Typography
+          variant="h2"
+          sx={{
+            fontSize: "70px",
+            color: "#fff",
+            position: "absolute",
+            bottom: "30px",
+            textAlign: "center",
+            // width: "100%",
+          }}
+        >
+          Mediterranean Roots <br /> Welcomes You
+        </Typography>
+      </Stack>
       <Stack
         sx={{
           justifyContent: "center",
@@ -78,6 +100,29 @@ const HomePage = () => {
           gap: { xs: "30px", sm: "50px" },
         }}
       >
+        <Typography variant="h3" sx={{ fontSize: { xs: "25px", sm: "40px" } }}>
+          Hope Is Where The Heart Is{" "}
+        </Typography>
+        <Typography
+          variant="h4"
+          sx={{
+            fontSize: { xs: "16px", sm: "20px" },
+            textAlign: "center",
+
+            width: { xs: "90%", sm: "70%" },
+          }}
+        >
+          Mediterranean Roots (MR) is a non-profit organization founded in Malta
+          to connect with individuals and communities across Europe who
+          appreciate and value our Mediterranean roots. The key objective of MR
+          is to preserve, promote, and celebrate the rich cultural tapestry of
+          our region. This involves engaging with artists, musicians, educators,
+          and enthusiasts to build a vibrant community dedicated to the
+          preservation and celebration of our heritage.
+        </Typography>
+        <Box component={"figure"} width={{ xs: "60px", sm: "200px" }}>
+          <Box component={"img"} maxWidth="100%" src={ImagesSrc.logo} />
+        </Box>
         <Typography variant="h3" sx={{ fontSize: { xs: "25px", sm: "40px" } }}>
           Mediterranean Roots
         </Typography>
