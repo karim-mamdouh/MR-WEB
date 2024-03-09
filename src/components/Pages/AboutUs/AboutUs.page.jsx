@@ -1,6 +1,7 @@
 import React from "react";
 import { Stack, Typography, Box } from "@mui/material";
 import ImagesSrc from "../../../utils/ImagesSrc";
+import video from "../../../assets/video-2.mp4";
 
 const AboutUsPage = () => {
   const listItems = [
@@ -32,7 +33,7 @@ const AboutUsPage = () => {
           }
         />
       </video> */}
-      <iframe
+      {/* <iframe
         style={{
           width: "100%",
           height: "70vh",
@@ -42,7 +43,21 @@ const AboutUsPage = () => {
         title="YouTube video player"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowFullScreen
-      ></iframe>
+      ></iframe> */}
+      <video
+        style={{
+          width: "100%",
+          height: "70vh",
+          objectFit: "fill",
+        }}
+        // controls
+        autoPlay
+        muted
+        loop
+      >
+        <source src={video} />
+      </video>
+
       <Stack
         sx={{
           gap: "40px",

@@ -11,6 +11,8 @@ import { useFormik } from "formik";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import ImagesSrc from "../../../utils/ImagesSrc";
+import video from "../../../assets/video-1.mp4";
+
 const HomePage = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
@@ -68,7 +70,7 @@ const HomePage = () => {
         />
       </video> */}
       <Stack sx={{ position: "relative", alignItems: "center" }}>
-        <iframe
+        {/* <iframe
           style={{
             width: "100%",
             height: "70vh",
@@ -78,7 +80,21 @@ const HomePage = () => {
           title="YouTube video player"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowFullScreen
-        ></iframe>
+        ></iframe> */}
+        <video
+          style={{
+            width: "100%",
+            height: "70vh",
+            objectFit: "fill",
+          }}
+          // controls
+          autoPlay
+          muted
+          loop
+        >
+          <source src={video} />
+        </video>
+
         <Typography
           variant="h2"
           sx={{
